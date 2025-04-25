@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,10 +11,7 @@ public class SawARat : MonoBehaviour
     
     public float radius = 5f; // the radius of the circle area
     public LayerMask layerMask; // the layer mask to check for objects
-    public float speed = 5f; // the speed of the player
-    public float chaseTime = 5f; // the time to chase the rat
-    public float chaseDistance = 10f; // the distance to chase the rat
-    public float chaseSpeed = 10f; // the speed of the player when chasing the rat
+    public float chaseSpeed = 5f; // the speed of the player when chasing the rat
     public float jumpForce = 10f; // the force of the jump
     
     private bool isChasing = false; // if the player is chasing the rat
@@ -43,17 +41,17 @@ public class SawARat : MonoBehaviour
             Vector2 direction = ((rat.transform.position - transform.position) * Vector2.right).normalized; // get the direction to the rat
             
             //check if the fox is near a cliff
-            Physics.Raycast(transform.position, new Vector2(direction.x, -1), out RaycastHit hit, 1f);
+            Physics.Raycast(transform.position, new Vector2(direction.x*2, -1), out RaycastHit hit, 3f);
             {
-                if (hit.collider.CompareTag("Ground"))
+                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
                 {
                     //standard chase
                     rb.velocity = new Vector2(direction.x * chaseSpeed, rb.velocity.y); // move the player towards the rat
                 }
                 else
                 {
-                    //jump to the right
-                    rb.AddForce(new Vector2(jumpForce, jumpForce), ForceMode2D.Impulse); // jump to the right
+                    //jump to the direction
+                    rb.AddForce(new Vector2(jumpForce*direction.x, jumpForce), ForceMode2D.Impulse); // jump to the right
                 }
             }
         }
@@ -72,5 +70,15 @@ public class SawARat : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red; // set the color of the gizmos
+        Gizmos.DrawWireSphere(transform.position, radius); // draw a wire sphere around the player
+     
+        Gizmos.color = Color.green; // set the color of the gizmos
+        Gizmos.DrawLine(transform.position,transform.position+new Vector3(-2,-1,0)*3);
+        Gizmos.DrawLine(transform.position,transform.position+new Vector3(2,-1,0)*3);
     }
 }
