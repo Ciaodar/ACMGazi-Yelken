@@ -8,6 +8,7 @@ public class GencTilkiController : MonoBehaviour
     public float runSpeed = 10f;
     public float airWalkSpeed = 4f;
     public float jumpImpulse = 10f;
+    private bool justJumped = false;
     
     private Vector2 moveInput;
     private Rigidbody2D rb;
@@ -152,7 +153,11 @@ public class GencTilkiController : MonoBehaviour
 
     private void Update()
     {
-        rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed , rb.velocity.y);
+        if (justJumped)
+        {
+            justJumped = false;
+        }
         IsGrounded = touchingCol.Cast(Vector2.down, castFilter, groundHits, groundDistance) > 0;
     }
     
@@ -189,6 +194,8 @@ public class GencTilkiController : MonoBehaviour
         {
             animator.SetTrigger("jumpTrigger");
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
+            justJumped = true;
+            IsGrounded = false;
         }
     }
 }
