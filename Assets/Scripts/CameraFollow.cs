@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,13 +7,20 @@ public class CameraFollow : MonoBehaviour
 {
     public Transform target;
     public float smoothSpeed = 0.125f;
-    public Vector3 offset = new Vector3(0, 0, -10f);
+    public Vector3 offset = new Vector3(10, 0, -10f);
+    private int lastDirection = 1; // 1 = sağa, -1 = sola
 
-    // Update is called once per frame
     void LateUpdate()
     {
-        Vector3 desiredTransform = target.position + offset;
-        Vector3 smoothed = Vector3.Lerp(transform.position, desiredTransform, smoothSpeed);
-        transform.position= new Vector3(smoothed.x, smoothed.y, offset.z);
+        if (target.localScale.x > 0)
+            lastDirection = 1;
+        else if (target.localScale.x < 0)
+            lastDirection = -1;
+
+        Vector3 dynamicOffset = new Vector3(offset.x * lastDirection, offset.y, offset.z);
+
+        Vector3 desiredPosition = target.position + dynamicOffset;
+        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+        transform.position = new Vector3(smoothedPosition.x, smoothedPosition.y, dynamicOffset.z);
     }
 }
