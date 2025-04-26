@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8803233899905654924}
   - component: {fileID: 8372011806390022365}
   - component: {fileID: 7655838191704986567}
+  - component: {fileID: 2798671848034543208}
   - component: {fileID: 3701336800897235549}
   - component: {fileID: 2963500776546335049}
   - component: {fileID: 1761505220752294763}
@@ -115,7 +116,23 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &2798671848034543208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6895477449428323855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f11541335efca7f4f8c362c1a8b17b36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 10
+  chaseSpeed: 5
+  jumpForce: 7
+  grounded: 0
 --- !u!114 &3701336800897235549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,8 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30688bb6572dcd74983de496b2126d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
-  runSpeed: 8
+  walkSpeed: 3
+  runSpeed: 5
   airWalkSpeed: 4
   jumpImpulse: 7
   castFilter:
