@@ -1,94 +1,154 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
+using System.Collections;
+using UnityEngine.InputSystem;
 
 public class SawARat : MonoBehaviour
 {
-    // this script checkes a circle area and 
-    // if there is a gameobject with a "Fare" tag, this scipt disables playercontroller and makes the player chase the rat
-    // this script is attached to the player(a fox)
+    public float radius = 5f; // Detection radius
+    public float chaseSpeed = 5f; // Speed when chasing the rat
+    public float runAwaySpeed = 7f; // Speed when running away from the bear
+    public float jumpForce = 10f; // Jump force
+    public float runawaytime = 3f;
     
-    public float radius = 5f; // the radius of the circle area
-    public float chaseSpeed = 5f; // the speed of the player when chasing the rat
-    public float jumpForce = 10f; // the force of the jump
-    public bool grounded = false; // if the player is on the ground
+    private bool grounded = false; // Whether the fox is on the ground
+    private bool isChasingRat = false; // Whether the fox is chasing a rat
+    private bool isRunningFromBear = false; // Whether the fox is running from a bear
     
-    
-    private bool isChasing = false; // if the player is chasing the rat
-    private GameObject rat; // the rat gameobject
-    private GencTilkiController playerController; // the player controller script
-    private Rigidbody2D rb; // the rigidbody of the player
-   
-    
-    
+    private GameObject rat; // Reference to the rat
+    private GameObject bear; // Reference to the bear
+    private Rigidbody2D rb; // Rigidbody of the fox
+    private GencTilkiController playerController;
+    private PlayerInput _playerInput;// Player controller script
+    private CliffController CC;
+    private Animator _animator; // Animator of the fox
+
     void Start()
     {
-        playerController = GetComponent<GencTilkiController>(); // get the player controller script
-        rb = GetComponent<Rigidbody2D>(); // get the rigidbody of the player
+        playerController = GetComponent<GencTilkiController>();
+        rb = GetComponent<Rigidbody2D>();
+        CC = GetComponentInChildren<CliffController>();
+        _playerInput = GetComponent<PlayerInput>();
+        _animator = GetComponent<Animator>();
     }
-    
+
     void Update()
     {
-        grounded= Physics2D.Raycast(transform.position, Vector2.down, 1.1f, LayerMask.GetMask("Ground")); // check if the player is on the ground
-        
-        if (isChasing)
-        {
-            // check if the rat is still in the scene.
-            if (rat == null)
-            {
-                isChasing = false; // stop chasing the rat
-                playerController.enabled = true; // enable the player controller
-                return;
-            }
-            
-            //rotate the player to the direction of the rat on y axis
-            Vector3 direction = (rat.transform.position - transform.position).normalized; // get the direction to the rat
-            if (direction.x > 0)
-            {
-                transform.rotation=Quaternion.Euler(0,0,0); // set the player to face the rat
-            }
-            else if (direction.x < 0)
-            {
-                transform.rotation=Quaternion.Euler(0,180,0); // set the player to face the rat
-            }
-            // Check for a cliff
-            bool isNearCliff = !Physics2D.Raycast(transform.position + new Vector3(transform.localScale.x * 0.5f, 0, 0), Vector2.down, 1.1f, LayerMask.GetMask("Ground"));
+        grounded = playerController.IsGrounded;
 
-            if (isNearCliff && grounded)
-            {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce); // make the fox jump
-            }
-            
-            rb.velocity = new Vector2(chaseSpeed * direction.x, rb.velocity.y); // move the player towards the rat
-            
-        }
-        else
-        {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius); // check for objects in the circle area
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(radius,3),0);
 
-            foreach (Collider2D collider in colliders)
+        bool ratInRange = false;
+        bool bearInRange = false;
+
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.CompareTag("Fare"))
             {
-                if (collider.CompareTag("Fare")) // check if the object has a "Fare" tag
-                {
-                    rat = collider.gameObject; // get the rat gameobject
-                    isChasing = true; // start chasing the rat
-                    playerController.enabled = false; // disable the player controller
-                    break;
-                }
+                rat = collider.gameObject;
+                ratInRange = true;
+            }
+            else if (collider.CompareTag("Bear"))
+            {
+                bear = collider.gameObject;
+                bearInRange = true;
             }
         }
-        
+
+        if (bearInRange && !isChasingRat && !isRunningFromBear)
+        {
+            isChasingRat = false;
+            isRunningFromBear = true;
+            playerController.enabled = false;
+            _playerInput.enabled = false;
+            playerController.IsMoving = true;
+            playerController.IsRunning = true;
+            StartCoroutine(RunAwayFromBear());
+        }
+        else if (ratInRange && !isChasingRat && !isRunningFromBear)
+        {
+            isRunningFromBear = false;
+            isChasingRat = true;
+            playerController.enabled = false;
+            _playerInput.enabled = false;
+            playerController.IsMoving = true;
+            playerController.IsRunning = true;
+            StartCoroutine(ChaseTheRat());
+        }
     }
 
-    private void OnDrawGizmos()
+    private IEnumerator ChaseTheRat()
     {
-        Gizmos.color = Color.red; // set the color of the gizmos
-        Gizmos.DrawWireSphere(transform.position, radius); // draw a wire sphere around the player
-     
-        Gizmos.color = Color.green; // set the color of the gizmos
-        Gizmos.DrawLine(transform.position,transform.position+new Vector3(-2,-1,0).normalized*5);
-        Gizmos.DrawLine(transform.position,transform.position+new Vector3(2,-1,0).normalized*5);
+        float elapsedTime = 0f; // the elapsed time of the chase
+        float runtime = rat.GetComponent<Rat>().runTime;
+        Vector2 direction =
+            (rat.transform.position - transform.position).normalized; // get the direction to chase the rat
+        while (elapsedTime < runtime)
+        {
+            if (direction.x < 0)
+                playerController.IsFacingRight = false;
+            else playerController.IsFacingRight = true;
+            playerController.enabled = false;
+            _playerInput.enabled = false;
+            playerController.IsMoving = true;
+            playerController.IsRunning = true;
+            {
+                rb.velocity = new Vector2(chaseSpeed * direction.x, rb.velocity.y); // move the fox towards the rat
+                elapsedTime += Time.deltaTime; // increase the elapsed time
+                if (CC.nearCliff && grounded)
+                {
+                    rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                    playerController.IsGrounded = false;
+                    grounded = false;
+                    _animator.SetTrigger("jumpTrigger");
+                }
+
+                yield return null; // wait for the next frame
+            }
+            playerController.enabled = true;
+            _playerInput.enabled = true;
+            isChasingRat = false;
+            playerController.IsMoving = false;
+            playerController.IsRunning = false;
+        }
     }
+
+    private IEnumerator RunAwayFromBear()
+        {
+            float elapsedTime = 0f; // the elapsed time of the run
+            float runtime = bear.GetComponent<Bear>().runtime;
+            Vector2 direction = ((transform.position - bear.transform.position) * Vector2.right).normalized; // get the direction to run away from the player
+            if (direction.x < 0)
+                playerController.IsFacingRight = false;
+            else playerController.IsFacingRight = true;
+            while (elapsedTime < runtime)
+            {
+                playerController.enabled = false;
+                _playerInput.enabled = false;
+                playerController.IsMoving = true;
+                playerController.IsRunning = true;
+            
+                rb.velocity = new Vector2(direction.x * runAwaySpeed , rb.velocity.y); // move the rat away from the player
+                elapsedTime += Time.deltaTime; // increase the elapsed time
+                if (CC.nearCliff && grounded)
+                {
+                    rb.AddForce(new Vector2(0,jumpForce),ForceMode2D.Impulse);
+                    playerController.IsGrounded = false;
+                    grounded = false;
+                    _animator.SetTrigger("jumpTrigger");
+                }
+                yield return null; // wait for the next frame
+            }
+            playerController.enabled = true;
+            _playerInput.enabled = true;
+            isRunningFromBear = false;
+            playerController.IsMoving = false;
+            playerController.IsRunning = false;
+        }
+    
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(transform.position, new Vector2(radius,3));
+        }
 }
