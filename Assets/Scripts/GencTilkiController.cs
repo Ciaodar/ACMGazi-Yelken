@@ -16,7 +16,7 @@ public class GencTilkiController : MonoBehaviour
     public ContactFilter2D castFilter;
     public float groundDistance = 0.05f;
     
-    BoxCollider2D touchingCol;
+    CapsuleCollider2D touchingCol;
     RaycastHit2D[] groundHits = new RaycastHit2D[5];
 
     public float CurrentMoveSpeed
@@ -147,7 +147,7 @@ public class GencTilkiController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        touchingCol = GetComponent<BoxCollider2D>();
+        touchingCol = GetComponent<CapsuleCollider2D>();
     }
 
     private void Update()
