@@ -10,14 +10,19 @@ public class Bear : MonoBehaviour
     private GameObject player; // Reference to the player (fox)
     private bool isChasing = false; // Whether the bear is chasing the player
     private Rigidbody2D rb; // Rigidbody of the bear
+    private Animator animator; // Animator of the bear
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component
+        animator = GetComponent<Animator>(); // Get the Animator component
     }
 
     void Update()
     {
+        animator.SetBool("isChasing", isChasing); // Set the animator parameter for chasing
+        
+        
         Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position,  new Vector2(radius,3) ,0); // Check for objects in the circle area
 
         bool playerInRange = false;
