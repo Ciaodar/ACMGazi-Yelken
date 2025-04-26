@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
@@ -8,7 +9,6 @@ public class SawARat : MonoBehaviour
     public float chaseSpeed = 5f; // Speed when chasing the rat
     public float runAwaySpeed = 7f; // Speed when running away from the bear
     public float jumpForce = 10f; // Jump force
-    public float runawaytime = 3f;
     
     private bool grounded = false; // Whether the fox is on the ground
     private bool isChasingRat = false; // Whether the fox is chasing a rat
@@ -22,6 +22,12 @@ public class SawARat : MonoBehaviour
     private CliffController CC;
     private Animator _animator; // Animator of the fox
 
+    public ContactFilter2D castFilter;
+    public float groundDistance = 0.05f;
+    
+    CapsuleCollider2D touchingCol;
+    RaycastHit2D[] groundHits = new RaycastHit2D[5];
+    
     void Start()
     {
         playerController = GetComponent<GencTilkiController>();
@@ -29,11 +35,20 @@ public class SawARat : MonoBehaviour
         CC = GetComponentInChildren<CliffController>();
         _playerInput = GetComponent<PlayerInput>();
         _animator = GetComponent<Animator>();
+        touchingCol = GetComponent<CapsuleCollider2D>();
+
+    }
+
+    private void FixedUpdate()
+    {
+        grounded = touchingCol.Cast(Vector2.down, castFilter, groundHits, groundDistance) > 0;
+        playerController.IsGrounded = grounded;
     }
 
     void Update()
     {
-        grounded = playerController.IsGrounded;
+        // Check if the fox is on the ground
+        
 
         Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(radius,3),0);
 

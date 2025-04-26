@@ -6,7 +6,7 @@ public class GencTilkiController : MonoBehaviour
 {
     public float walkSpeed = 5f;
     public float runSpeed = 10f;
-    public float airWalkSpeed = 4f;
+    //public float airWalkSpeed = 4f;
     public float jumpImpulse = 10f;
     private bool justJumped = false;
     
@@ -14,11 +14,7 @@ public class GencTilkiController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     
-    public ContactFilter2D castFilter;
-    public float groundDistance = 0.05f;
-    
-    CapsuleCollider2D touchingCol;
-    RaycastHit2D[] groundHits = new RaycastHit2D[5];
+   
 
     public float CurrentMoveSpeed
     {
@@ -41,7 +37,7 @@ public class GencTilkiController : MonoBehaviour
                     }
                     else
                     {
-                        return airWalkSpeed;
+                        return Mathf.Abs(rb.velocity.x);
                     }
                   
                 }
@@ -147,13 +143,11 @@ public class GencTilkiController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        touchingCol = GetComponent<CapsuleCollider2D>();
     }
 
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed , rb.velocity.y);
-        IsGrounded = touchingCol.Cast(Vector2.down, castFilter, groundHits, groundDistance) > 0;
         animator.SetFloat("yVelocity", rb.velocity.y);
     }
     
