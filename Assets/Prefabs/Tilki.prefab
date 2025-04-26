@@ -62,7 +62,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 2.4628973, y: -1.9390223}
@@ -198,7 +198,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 6
   m_Material: {fileID: 6200000, guid: c94ac27d6c7090c488f0e1291cf95cbf, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -222,25 +222,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30688bb6572dcd74983de496b2126d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 3
-  runSpeed: 5
-  airWalkSpeed: 4
-  jumpImpulse: 21
-  castFilter:
-    useTriggers: 0
-    useLayerMask: 1
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 64
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
-  groundDistance: 0.05
+  walkSpeed: 9
+  runSpeed: 12
+  jumpImpulse: 25
   _isMoving: 0
   _isRunning: 0
   _isGrounded: 0
@@ -257,9 +241,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 25
-  chaseSpeed: 7
-  runAwaySpeed: 9
-  jumpForce: 30
+  chaseSpeed: 14
+  runAwaySpeed: 17
+  jumpForce: 10
+  castFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  groundDistance: 0.05
 --- !u!114 &2963500776546335049
 MonoBehaviour:
   m_ObjectHideFlags: 0
