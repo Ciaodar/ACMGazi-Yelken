@@ -403,7 +403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 584756114}
-  smoothSpeed: 0.005
+  smoothSpeed: 0.05
   offset: {x: 0, y: 0, z: -10}
 --- !u!4 &584756114 stripped
 Transform:
@@ -511,38 +511,6 @@ PrefabInstance:
     - target: {fileID: 6895477449428323855, guid: 651f742eb68452d4a8c04e896818ee21, type: 3}
       propertyPath: m_TagString
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8372011806390022365, guid: 651f742eb68452d4a8c04e896818ee21, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8372011806390022365, guid: 651f742eb68452d4a8c04e896818ee21, type: 3}
-      propertyPath: m_FlipY
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8372011806390022365, guid: 651f742eb68452d4a8c04e896818ee21, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 19a78e63d096cd04eaf81f56c890030b, type: 3}
-    - target: {fileID: 8372011806390022365, guid: 651f742eb68452d4a8c04e896818ee21, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8372011806390022365, guid: 651f742eb68452d4a8c04e896818ee21, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8372011806390022365, guid: 651f742eb68452d4a8c04e896818ee21, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8372011806390022365, guid: 651f742eb68452d4a8c04e896818ee21, type: 3}
-      propertyPath: m_DrawMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8372011806390022365, guid: 651f742eb68452d4a8c04e896818ee21, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8803233899905654924, guid: 651f742eb68452d4a8c04e896818ee21, type: 3}
       propertyPath: m_LocalPosition.x

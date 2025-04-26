@@ -67,7 +67,6 @@ public class GencTilkiController : MonoBehaviour
     }
     [SerializeField]
     private bool _isMoving = false;
-    
     public bool IsMoving
     {
         get
@@ -151,14 +150,11 @@ public class GencTilkiController : MonoBehaviour
         touchingCol = GetComponent<CapsuleCollider2D>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed , rb.velocity.y);
-        if (justJumped)
-        {
-            justJumped = false;
-        }
         IsGrounded = touchingCol.Cast(Vector2.down, castFilter, groundHits, groundDistance) > 0;
+        animator.SetFloat("yVelocity", rb.velocity.y);
     }
     
     public void OnMove(InputAction.CallbackContext context)
