@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2963500776546335049}
   - component: {fileID: 1761505220752294763}
   - component: {fileID: 6876969676159283732}
+  - component: {fileID: 3492136501586313203}
   m_Layer: 7
   m_Name: Tilki
   m_TagString: Player
@@ -332,3 +333,15 @@ CapsuleCollider2D:
   m_Offset: {x: -0.203409, y: -0.19411576}
   m_Size: {x: 4.8319063, y: 2.7556186}
   m_Direction: 1
+--- !u!114 &3492136501586313203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6895477449428323855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 795a153ed8d57814f81ce16376b4cdf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
