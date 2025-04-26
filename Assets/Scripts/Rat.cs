@@ -12,7 +12,6 @@ public class Rat : MonoBehaviour
     //if ther is no player, it patrols between given two points
     // this script is attached to the rat
     public float radius; // the radius of the circle area
-    public LayerMask layerMask; // the layer mask to check for objects
     public float speed; // the speed of the rat
     public float runTime; // the time to run away from the player
     public float fadeTime; // the time to fade away
@@ -60,7 +59,7 @@ public class Rat : MonoBehaviour
         }
         
         // check if the player is in the circle area
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius, layerMask);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
         foreach (Collider2D collider in colliders)
         {
             if (collider.CompareTag("Player"))
@@ -78,7 +77,7 @@ public class Rat : MonoBehaviour
     private IEnumerator RunAway()
     {
         float elapsedTime = 0f; // the elapsed time of the run
-        Vector2 direction = (transform.position - player.transform.position)*Vector2.right; // get the direction to run away from the player
+        Vector2 direction = ((transform.position - player.transform.position) * Vector2.right).normalized; // get the direction to run away from the player
         while (elapsedTime < runTime)
         {
             rb.velocity = new Vector2(direction.x * speed , rb.velocity.y); // move the rat away from the player
