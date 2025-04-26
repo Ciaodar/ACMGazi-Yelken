@@ -74,7 +74,7 @@ public class GencTilkiController : MonoBehaviour
         {
             return _isMoving;
         }
-        private set
+        set
         {
             _isMoving = value;
             animator.SetBool("isMoving", value);
@@ -88,7 +88,7 @@ public class GencTilkiController : MonoBehaviour
         {
             return _isRunning;
         }
-        private set
+        set
         {
             _isRunning = value;
             animator.SetBool("isRunning", value);
@@ -103,7 +103,7 @@ public class GencTilkiController : MonoBehaviour
         {
             return _isGrounded;
         }
-        private set
+        set
         {
             _isGrounded = value;
             animator.SetBool("isGrounded", value);
@@ -122,7 +122,7 @@ public class GencTilkiController : MonoBehaviour
     public bool IsFacingRight
     {
         get { return _isFacingRight; }
-        private set
+        set
         {
             if (_isFacingRight != value)
             {

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c45e1580c3e843f459a4bc8e59ef0ae7
+guid: 9bebc1866f703f94fbe6fd503e9a1539
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -50,7 +50,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 60
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -123,7 +123,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MagaraTileset_0
+      name: MAGARA TILE_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0d57d9a1ee5cf84481f62a9099a1092
+      internalID: -1318904020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGARA TILE_1
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 600
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef8867bf94aeb8c4c8cce2ebf06b2af1
+      internalID: -1235871060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGARA TILE_2
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 600
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ab3d8639d1376c42979723212072ce6
+      internalID: 1718827607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGARA TILE_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 480
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31606a03e2733ee489a08e59cae33db5
+      internalID: 2052047317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGARA TILE_4
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 480
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24b49eefac94d4a48bee3ee3f26cf440
+      internalID: -936661273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGARA TILE_5
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 480
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a15b385a24fa1634080a2be927700a46
+      internalID: 1690156386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGARA TILE_6
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +263,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d20d9a7dc55deab49af8a927cb7a7474
-      internalID: 2123547364
+      spriteID: 37b57d1b028396a47afbed29ae664904
+      internalID: 1590503638
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MagaraTileset_1
+      name: MAGARA TILE_7
       rect:
         serializedVersion: 2
         x: 120
@@ -158,14 +284,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: afbddc020cbbd6d438abc4890e06d460
-      internalID: -1190161195
+      spriteID: bb2bbe56b86f6ff478eb3ca28ed5a365
+      internalID: 1727667823
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MagaraTileset_2
+      name: MAGARA TILE_8
       rect:
         serializedVersion: 2
         x: 240
@@ -179,35 +305,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 225f902cb8b9d0843b4c519e1e198c87
-      internalID: -2084227049
+      spriteID: bf359bb766cb3cc45b69f053c205fba8
+      internalID: 1095347420
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MagaraTileset_3
-      rect:
-        serializedVersion: 2
-        x: 360
-        y: 360
-        width: 120
-        height: 120
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 34b5f51f4505eaa438eb29fcc098f2ef
-      internalID: 338166024
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MagaraTileset_4
+      name: MAGARA TILE_9
       rect:
         serializedVersion: 2
         x: 0
@@ -221,14 +326,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fbd7d9861b6150c45945f78be27a96f1
-      internalID: 1925582957
+      spriteID: 0a14654dff1a6fc448c7a6f2389881ec
+      internalID: -1056085400
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MagaraTileset_5
+      name: MAGARA TILE_10
       rect:
         serializedVersion: 2
         x: 120
@@ -242,14 +347,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f04d0ff8ed33974b88f3db82d0c0a99
-      internalID: -1944682067
+      spriteID: f50817760f65ff2499a249440bda7959
+      internalID: -1293659786
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MagaraTileset_6
+      name: MAGARA TILE_11
       rect:
         serializedVersion: 2
         x: 240
@@ -263,35 +368,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a904ff61d69c11469d453f17ff95b95
-      internalID: 140232281
+      spriteID: 8e80d33aa0e42fa489e2293dc7c17ae3
+      internalID: 1494224166
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MagaraTileset_7
-      rect:
-        serializedVersion: 2
-        x: 360
-        y: 240
-        width: 120
-        height: 120
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7c8c3bf176cc25d4589bdcf91ceae0a1
-      internalID: 1563900660
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MagaraTileset_8
+      name: MAGARA TILE_12
       rect:
         serializedVersion: 2
         x: 0
@@ -305,14 +389,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ade5a77be8fa67489414a80bd3cdb12
-      internalID: 994874505
+      spriteID: de490a517bb384347a4d648079e8198f
+      internalID: -413074790
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MagaraTileset_9
+      name: MAGARA TILE_13
       rect:
         serializedVersion: 2
         x: 120
@@ -326,14 +410,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcc8887e2e469b44ea657ec2bfbd4021
-      internalID: -599974314
+      spriteID: cf6ab444affc43549a8da194b78dca3f
+      internalID: 840007120
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MagaraTileset_10
+      name: MAGARA TILE_14
       rect:
         serializedVersion: 2
         x: 240
@@ -347,35 +431,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 521326c4f9a9e1e4ebac2823059a9b39
-      internalID: -1399463384
+      spriteID: 75f131e0922427340b5b60d30e750f00
+      internalID: 1803246978
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MagaraTileset_11
-      rect:
-        serializedVersion: 2
-        x: 360
-        y: 120
-        width: 120
-        height: 120
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7186595bb997a9941803646f1800d9b7
-      internalID: -1701009092
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MagaraTileset_12
+      name: MAGARA TILE_15
       rect:
         serializedVersion: 2
         x: 0
@@ -389,14 +452,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db92c60716a792e44bbfe30390d72fe4
-      internalID: -814191947
+      spriteID: 0e5778cde7b5acb4ab4cb1cd92529310
+      internalID: 1768223525
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MagaraTileset_13
+      name: MAGARA TILE_16
       rect:
         serializedVersion: 2
         x: 120
@@ -410,14 +473,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f5bd7c9d5e542c47b96b49fb96e54c2
-      internalID: -1087744707
+      spriteID: 877f3525fdd823f409d803b3d3043945
+      internalID: -258806222
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MagaraTileset_14
+      name: MAGARA TILE_17
       rect:
         serializedVersion: 2
         x: 240
@@ -431,29 +494,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31a2c008d67201044bf29f0840f72b3b
-      internalID: 1949604010
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MagaraTileset_15
-      rect:
-        serializedVersion: 2
-        x: 360
-        y: 0
-        width: 120
-        height: 120
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 68d3bd4233e498b428febfe07629810a
-      internalID: -270398728
+      spriteID: 8c50b77ab7ceb704fb5af2d9d24b7f59
+      internalID: -1438709179
       vertices: []
       indices: 
       edges: []
@@ -469,22 +511,24 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MagaraTileset_0: 2123547364
-      MagaraTileset_1: -1190161195
-      MagaraTileset_10: -1399463384
-      MagaraTileset_11: -1701009092
-      MagaraTileset_12: -814191947
-      MagaraTileset_13: -1087744707
-      MagaraTileset_14: 1949604010
-      MagaraTileset_15: -270398728
-      MagaraTileset_2: -2084227049
-      MagaraTileset_3: 338166024
-      MagaraTileset_4: 1925582957
-      MagaraTileset_5: -1944682067
-      MagaraTileset_6: 140232281
-      MagaraTileset_7: 1563900660
-      MagaraTileset_8: 994874505
-      MagaraTileset_9: -599974314
+      MAGARA TILE_0: -1318904020
+      MAGARA TILE_1: -1235871060
+      MAGARA TILE_10: -1293659786
+      MAGARA TILE_11: 1494224166
+      MAGARA TILE_12: -413074790
+      MAGARA TILE_13: 840007120
+      MAGARA TILE_14: 1803246978
+      MAGARA TILE_15: 1768223525
+      MAGARA TILE_16: -258806222
+      MAGARA TILE_17: -1438709179
+      MAGARA TILE_2: 1718827607
+      MAGARA TILE_3: 2052047317
+      MAGARA TILE_4: -936661273
+      MAGARA TILE_5: 1690156386
+      MAGARA TILE_6: 1590503638
+      MAGARA TILE_7: 1727667823
+      MAGARA TILE_8: 1095347420
+      MAGARA TILE_9: -1056085400
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

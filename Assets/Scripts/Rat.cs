@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UIElements;
 
 public class Rat : MonoBehaviour
 {
@@ -42,6 +43,8 @@ public class Rat : MonoBehaviour
 
     private void Update()
     {
+        if (rb.velocity.x < 0) transform.rotation=Quaternion.Euler(0,180,0);
+        else transform.rotation=Quaternion.Euler(0,0,0);
         //patrol when player is not around
         if (!isRunning)
         {
@@ -59,7 +62,7 @@ public class Rat : MonoBehaviour
         }
         
         // check if the player is in the circle area
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(radius,3),0);
         foreach (Collider2D collider in colliders)
         {
             if (collider.CompareTag("Player"))
@@ -102,7 +105,7 @@ public class Rat : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red; // set the color of the gizmos
-        Gizmos.DrawWireSphere(transform.position, radius); // draw a wire sphere around the player
+        Gizmos.DrawWireCube(transform.position, new Vector2(radius,3)); // draw a wire sphere around the player
         
         Gizmos.color = Color.gray; // set the color of the gizmos
         Gizmos.DrawLine(pointA.position, pointB.position); // draw a line between the two points of the patrol
