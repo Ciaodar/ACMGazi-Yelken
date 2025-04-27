@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -39,7 +40,7 @@ public class GencTilkiController : MonoBehaviour
                     }
                     else
                     {
-                        return airWalkSpeed;
+                        return MathF.Abs(rb.velocity.x); //airwalk speed is equal to the value before jump.
                     }
                   
                 }
