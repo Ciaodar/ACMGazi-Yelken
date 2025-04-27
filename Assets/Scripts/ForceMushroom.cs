@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ForceMushroom : MonoBehaviour
 {
-    public Vector3 forceDirection = new Vector3(0, 10f, 0);
+    public Vector2 forceDirection = new Vector2(10, 10f);
     private ForceMode2D forceMode = ForceMode2D.Impulse; 
     public bool destroyOnHit = true; 
 
@@ -24,5 +24,7 @@ public class ForceMushroom : MonoBehaviour
             }
             gameObject.tag="Untagged"; // Change the tag to "Untagged" after the player hits it
             other.GetComponent<SawARat>().isGoingToEdible = false;
+            other.GetComponent<GencTilkiController>().isUnderForce = true;
+            other.GetComponent<GencTilkiController>().StartCoroutine("ResetForceState");
         }
     }}

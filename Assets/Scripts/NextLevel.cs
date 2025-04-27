@@ -22,7 +22,7 @@ public class NextLevel : MonoBehaviour
     }
     private IEnumerator LoadNextLevel()
     {
-        yield return new WaitForSeconds(1.5f); // Wait for the fade out to complete
+        yield return new WaitForSeconds(1f); // Wait for the fade out to complete
         // Load the next level here
         // For example, using UnityEngine.SceneManagement;
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);

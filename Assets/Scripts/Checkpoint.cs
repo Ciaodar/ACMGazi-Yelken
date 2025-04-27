@@ -18,6 +18,9 @@ public class Checkpoint : MonoBehaviour
         {
             other.GetComponent<PlayerRespawn>().SetCheckpoint(transform.position);
             animator.SetTrigger("Check");
+            GencTilkiController gtc = other.GetComponent<GencTilkiController>();
+            gtc.effect = 1f;
+            
             enabled = false; // Disable the checkpoint after it's been activated
         }
     }
