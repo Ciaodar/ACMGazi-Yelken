@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CutsceneController : MonoBehaviour
@@ -43,6 +44,7 @@ public class CutsceneController : MonoBehaviour
 
     private void LoadNextScene()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Level1");
+        
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex==1?2:0);
     }
 }
