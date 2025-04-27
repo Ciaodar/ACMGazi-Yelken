@@ -140,7 +140,11 @@ public class SawARat : MonoBehaviour
     private IEnumerator ChaseTheRat()
     {
         float elapsedTime = 0f; // the elapsed time of the chase
-        float runtime = rat.GetComponent<Rat>().runTime;
+        float runtime=3f;
+        if(rat.GetComponent<Rat>()!=null)
+            runtime = rat.GetComponent<Rat>().runTime; // the time to chase the rat
+        if (rat.GetComponent<Rabbit>()!=null)
+            runtime = rat.GetComponent<Rabbit>().runTime; // the time to chase the rabbit
         Vector2 direction =
             (rat.transform.position - transform.position).normalized; // get the direction to chase the rat
         while (elapsedTime < runtime)
@@ -165,6 +169,7 @@ public class SawARat : MonoBehaviour
 
                 yield return null; // wait for the next frame
             }
+            rb.velocity= new Vector2(0, rb.velocity.y); // move the fox towards the rat
             playerController.enabled = true;
             _playerInput.enabled = true;
             isChasingRat = false;
