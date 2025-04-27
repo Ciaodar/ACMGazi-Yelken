@@ -111,6 +111,9 @@ public class SawARat : MonoBehaviour
         float distance = (edible.transform.position - transform.position).magnitude;
         while (edible != null && distance<radius && isGoingToEdible )
         {
+            if (!isGoingToEdible) // ekstra güvenlik
+                yield break;
+            
             Vector2 direction = (edible.transform.position - transform.position).normalized;
             if (direction.x < 0)
                 playerController.IsFacingRight = false;

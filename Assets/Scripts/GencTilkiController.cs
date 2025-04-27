@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,10 +7,12 @@ public class GencTilkiController : MonoBehaviour
 {
     public float walkSpeed = 5f;
     public float runSpeed = 10f;
-    //public float airWalkSpeed = 4f;
+    public float airWalkSpeed = 4f;
     public float jumpImpulse = 10f;
+    public float effect = 1f;
     private bool justJumped = false;
-    
+    public bool isUnderForce = false;
+    public float forceSure = 1f;
     private Vector2 moveInput;
     private Rigidbody2D rb;
     private Animator animator;
@@ -37,7 +40,7 @@ public class GencTilkiController : MonoBehaviour
                     }
                     else
                     {
-                        return Mathf.Abs(rb.velocity.x);
+                        return airWalkSpeed;
                     }
                   
                 }
@@ -147,8 +150,16 @@ public class GencTilkiController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed , rb.velocity.y);
+        if(!isUnderForce)
+        rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed * effect , rb.velocity.y);
+        
         animator.SetFloat("yVelocity", rb.velocity.y);
+    }
+    
+    private IEnumerator ResetForceState()
+    {
+        yield return new WaitForSeconds(forceSure);
+        isUnderForce = false;
     }
     
     public void OnMove(InputAction.CallbackContext context)
