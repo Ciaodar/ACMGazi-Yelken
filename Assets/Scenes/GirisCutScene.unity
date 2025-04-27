@@ -299,14 +299,13 @@ MonoBehaviour:
   audioSource: {fileID: 2067331447}
   audioClips: []
   cutsceneSprites:
-  - {fileID: 21300000, guid: 8f7d302f87452b949bfb1412b834ee46, type: 3}
-  - {fileID: 21300000, guid: 8733a6c0c355c264b8a69ba33b96bdc8, type: 3}
-  - {fileID: 21300000, guid: cf5bb69557117b147b2cfd2fa63939c7, type: 3}
-  - {fileID: 21300000, guid: 4e97fa6f349368a499a9287464ea633b, type: 3}
+  - {fileID: 21300000, guid: 58fafc39d87b72c409b09a35466b43da, type: 3}
+  - {fileID: 21300000, guid: 45e5f1465b6bc424fbf28abc9760ac96, type: 3}
+  - {fileID: 21300000, guid: 8e862c89fca5cdc489db89dd65b579db, type: 3}
   cutsceneStrings:
-  - "Bir zamanlar bir Duhan varm\u0131\u015F."
-  - "Bir zaman sonra iki Duhan varm\u0131\u015F."
-  - "Sonra Duhanlar olmu\u015F."
+  - 
+  - 
+  - 
   displayTime: 5
 --- !u!4 &1297654048
 Transform:
