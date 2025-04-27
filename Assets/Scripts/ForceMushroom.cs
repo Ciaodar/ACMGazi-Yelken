@@ -22,5 +22,7 @@ public class ForceMushroom : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+            gameObject.tag="Untagged"; // Change the tag to "Untagged" after the player hits it
+            other.GetComponent<SawARat>().isGoingToEdible = false;
         }
     }}

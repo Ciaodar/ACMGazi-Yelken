@@ -440,7 +440,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.203409, y: -0.19411576}
-  m_Size: {x: 4.8319063, y: 2.7556186}
+  m_Size: {x: 3.2789264, y: 2.7556217}
   m_Direction: 1
 --- !u!114 &3492136501586313203
 MonoBehaviour:
@@ -468,3 +468,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33245d6489cd7d469b910ff4c35b801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathSound: {fileID: 0}

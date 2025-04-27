@@ -13,6 +13,7 @@ public class SawARat : MonoBehaviour
     private bool grounded = false; // Whether the fox is on the ground
     private bool isChasingRat = false; // Whether the fox is chasing a rat
     private bool isRunningFromBear = false; // Whether the fox is running from a bear
+    [NonSerialized]public bool isGoingToEdible = false; // Whether the fox is going to an edible item
     
     private GameObject rat; // Reference to the rat
     private GameObject bear; // Reference to the bear
@@ -25,7 +26,7 @@ public class SawARat : MonoBehaviour
     public ContactFilter2D castFilter;
     public float groundDistance = 0.05f;
     
-    CapsuleCollider2D touchingCol;
+    BoxCollider2D touchingCol;
     RaycastHit2D[] groundHits = new RaycastHit2D[5];
     
     void Start()
@@ -35,7 +36,7 @@ public class SawARat : MonoBehaviour
         CC = GetComponentInChildren<CliffController>();
         _playerInput = GetComponent<PlayerInput>();
         _animator = GetComponent<Animator>();
-        touchingCol = GetComponent<CapsuleCollider2D>();
+        touchingCol = GetComponent<BoxCollider2D>();
 
     }
 
@@ -47,13 +48,12 @@ public class SawARat : MonoBehaviour
 
     void Update()
     {
-        // Check if the fox is on the ground
-        
-
-        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(radius,3),0);
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(radius, 3), 0);
 
         bool ratInRange = false;
         bool bearInRange = false;
+        bool edibleInRange = false;
+        GameObject edible = null;
 
         foreach (Collider2D collider in colliders)
         {
@@ -67,28 +67,74 @@ public class SawARat : MonoBehaviour
                 bear = collider.gameObject;
                 bearInRange = true;
             }
+            else if (collider.CompareTag("Edible"))
+            {
+                edible = collider.gameObject;
+                edibleInRange = true;
+            }
         }
 
-        if (bearInRange && !isChasingRat && !isRunningFromBear)
+        if (!isChasingRat && !isRunningFromBear && !isGoingToEdible)
         {
-            isChasingRat = false;
-            isRunningFromBear = true;
-            playerController.enabled = false;
-            _playerInput.enabled = false;
-            playerController.IsMoving = true;
-            playerController.IsRunning = true;
-            StartCoroutine(RunAwayFromBear());
+            if (edibleInRange )
+            {
+                isGoingToEdible = true;
+                playerController.enabled = false;
+                _playerInput.enabled = false;
+                playerController.IsMoving = true;
+                playerController.IsRunning = true;
+                StartCoroutine(GoToEdible(edible));
+            }
+            else if (bearInRange)
+            {
+                isRunningFromBear = true;
+                playerController.enabled = false;
+                _playerInput.enabled = false;
+                playerController.IsMoving = true;
+                playerController.IsRunning = true;
+                StartCoroutine(RunAwayFromBear());
+            }
+            else if (ratInRange)
+            {
+                isChasingRat = true;
+                playerController.enabled = false;
+                _playerInput.enabled = false;
+                playerController.IsMoving = true;
+                playerController.IsRunning = true;
+                StartCoroutine(ChaseTheRat());
+            }
         }
-        else if (ratInRange && !isChasingRat && !isRunningFromBear)
+    }
+    
+    private IEnumerator GoToEdible(GameObject edible)
+    {
+        float distance = (edible.transform.position - transform.position).magnitude;
+        while (edible != null && distance<radius && isGoingToEdible )
         {
-            isRunningFromBear = false;
-            isChasingRat = true;
-            playerController.enabled = false;
-            _playerInput.enabled = false;
-            playerController.IsMoving = true;
-            playerController.IsRunning = true;
-            StartCoroutine(ChaseTheRat());
+            Vector2 direction = (edible.transform.position - transform.position).normalized;
+            if (direction.x < 0)
+                playerController.IsFacingRight = false;
+            else
+                playerController.IsFacingRight = true;
+
+            rb.velocity = new Vector2(chaseSpeed * direction.x, rb.velocity.y);
+
+            if (CC.nearCliff && grounded)
+            {
+                rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                playerController.IsGrounded = false;
+                grounded = false;
+                _animator.SetTrigger("jumpTrigger");
+            }
+
+            yield return null;
         }
+
+        isGoingToEdible = false;
+        playerController.enabled = true;
+        _playerInput.enabled = true;
+        playerController.IsMoving = false;
+        playerController.IsRunning = false;
     }
 
     private IEnumerator ChaseTheRat()

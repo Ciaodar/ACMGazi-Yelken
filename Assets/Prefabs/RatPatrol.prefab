@@ -175,7 +175,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 664f32da8d4c9264faba439a5381d382, type: 3}
   m_Color: {r: 0.79196054, g: 0.73589313, b: 0.73589313, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5.12, y: 5.12}
@@ -196,9 +196,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 918dd01f62f4ebd409af615a984c8e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 9
-  speed: 8
-  runTime: 3
+  radius: 25
+  speed: 15
+  runTime: 1
   fadeTime: 2
   fadeSpeed: 5
   patrolSpeed: 5
@@ -231,7 +231,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &4682558889218676630
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ForceBackMushroom Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 825061553355084658, guid: 5fce268618a80bf44a8bc0c41a1755b6, type: 3}
+      propertyPath: m_TagString
+      value: Edible
+      objectReference: {fileID: 0}
     - target: {fileID: 1220342782649342732, guid: 5fce268618a80bf44a8bc0c41a1755b6, type: 3}
       propertyPath: destroyOnHit
       value: 1
@@ -65,19 +69,52 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8898927540149690157, guid: 5fce268618a80bf44a8bc0c41a1755b6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f17ddbfcf9470c14a8a1f134200e9f88, type: 3}
+    - target: {fileID: 8898927540149690157, guid: 5fce268618a80bf44a8bc0c41a1755b6, type: 3}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8898927540149690157, guid: 5fce268618a80bf44a8bc0c41a1755b6, type: 3}
       propertyPath: m_Color.g
-      value: 0.78536844
+      value: 0.9915247
       objectReference: {fileID: 0}
     - target: {fileID: 8898927540149690157, guid: 5fce268618a80bf44a8bc0c41a1755b6, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 0.9607055
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 825061553355084658, guid: 5fce268618a80bf44a8bc0c41a1755b6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3281529082734576519}
   m_SourcePrefab: {fileID: 100100000, guid: 5fce268618a80bf44a8bc0c41a1755b6, type: 3}
+--- !u!1 &9055652113413787536 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 825061553355084658, guid: 5fce268618a80bf44a8bc0c41a1755b6, type: 3}
+  m_PrefabInstance: {fileID: 8565589767105060066}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &-3281529082734576519
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9055652113413787536}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ba4f9874ad5bf724f9f4a55da399ef07, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
