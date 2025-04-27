@@ -6,7 +6,6 @@ public class GencTilkiController : MonoBehaviour
 {
     public float walkSpeed = 5f;
     public float runSpeed = 10f;
-    //public float airWalkSpeed = 4f;
     public float jumpImpulse = 10f;
     private bool justJumped = false;
     
