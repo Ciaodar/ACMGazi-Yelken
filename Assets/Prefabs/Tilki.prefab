@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 1761505220752294763}
   - component: {fileID: 3492136501586313203}
   - component: {fileID: 5565646693074137450}
-  - component: {fileID: 3237243289180574648}
+  - component: {fileID: 9077953313796767691}
   m_Layer: 7
   m_Name: Tilki
   m_TagString: Player
@@ -209,7 +209,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!114 &3701336800897235549
 MonoBehaviour:
@@ -242,8 +242,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 25
-  chaseSpeed: 18
-  runAwaySpeed: 20
+  chaseSpeed: 14
+  runAwaySpeed: 17
   jumpForce: 10
   castFilter:
     useTriggers: 0
@@ -434,7 +434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathSound: {fileID: 0}
---- !u!61 &3237243289180574648
+--- !u!61 &9077953313796767691
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

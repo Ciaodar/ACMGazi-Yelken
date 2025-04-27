@@ -21,7 +21,7 @@ public class Checkpoint : MonoBehaviour
             GencTilkiController gtc = other.GetComponent<GencTilkiController>();
             gtc.effect = 1f;
             
-            enabled = false; // Disable the checkpoint after it's been activated
+            Destroy(this); // Disable the checkpoint after it's been activated
         }
     }
 }
