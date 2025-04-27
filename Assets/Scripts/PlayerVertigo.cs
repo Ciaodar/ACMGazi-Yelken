@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerVertigo : MonoBehaviour
@@ -22,7 +23,7 @@ public class PlayerVertigo : MonoBehaviour
     public void StartVertigo(float duraiton)
     {
         vertigoTimer = duraiton;
-        originalRotation = camTransform.rotation;
+        originalRotation = quaternion.identity;
         isVertigo = true;
     }
 
