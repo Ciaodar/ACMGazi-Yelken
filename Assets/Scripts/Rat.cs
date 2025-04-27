@@ -99,7 +99,7 @@ public class Rat : MonoBehaviour
             elapsedTime += Time.deltaTime * fadeSpeed; // increase the elapsed time
             yield return null; // wait for the next frame
         }
-        Destroy(gameObject); // destroy the rat gameobject after fading away
+        gameObject.SetActive(false); // destroy the rat gameobject after fading away
     }
     
     private void OnDrawGizmos()

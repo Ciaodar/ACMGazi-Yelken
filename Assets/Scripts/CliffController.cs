@@ -6,14 +6,18 @@ using UnityEngine;
 
 public class CliffController : MonoBehaviour
 {
+    
     public bool nearCliff = false;
     public void OnTriggerEnter2D(Collider2D other)
     {
-        nearCliff = false;
+        if(other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            nearCliff = false;
+        
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        nearCliff = true;
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            nearCliff = true;
     }
 }
