@@ -56,6 +56,7 @@ public class Bear : MonoBehaviour
             yield return null; // wait for the next frame
         }
         isChasing = false; // Stop chasing the player
+        rb.velocity = Vector2.zero; // Stop the bear's movement
     }
 
     private void OnDrawGizmos()
