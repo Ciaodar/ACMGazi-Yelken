@@ -51,10 +51,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 20
   speed: 15
-  runTime: 3
+  runTime: 4
   fadeTime: 2
   fadeSpeed: 5
-  jumpForce: 10
+  jumpForce: 7
   castFilter:
     useTriggers: 0
     useLayerMask: 1

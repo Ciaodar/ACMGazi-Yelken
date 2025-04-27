@@ -21,7 +21,6 @@ public class Rabbit : MonoBehaviour
     private SpriteRenderer spriteRenderer; // the sprite renderer of the rat
     private Rigidbody2D rb;
     private Animator _animator; // Animator of the fox
-    private GencTilkiController playerController;
     private Color originalColor; // the original color of the rat
     private float fadeAmount;
     private CliffController CC;
@@ -38,18 +37,19 @@ public class Rabbit : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>(); // get the sprite renderer of the rat
         touchingCol = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>(); // get the rigidbody of the rat
-        playerController = GetComponent<GencTilkiController>();
         CC = GetComponentInChildren<CliffController>();
         _animator = GetComponent<Animator>(); // get the animator of the rat
-        playerController = GetComponent<GencTilkiController>();
         originalColor = spriteRenderer.color; // get the original color of the rat
+    }
+
+    private void FixedUpdate()
+    {
+        grounded = touchingCol.Cast(Vector2.down, castFilter, groundHits, groundDistance) > 0;
+        _animator.SetBool("grounded", grounded);
     }
 
     private void Update()
     {
-        _animator.SetBool("isRunning", isRunning);
-        _animator.SetBool("grounded", grounded);
-        
         if (rb.velocity.x < 0) transform.rotation=Quaternion.Euler(0,180,0);
         else transform.rotation=Quaternion.Euler(0,0,0);
         
@@ -67,6 +67,7 @@ public class Rabbit : MonoBehaviour
                 }
             }
         }
+        _animator.SetBool("isRunning", isRunning);
     }
     
     private IEnumerator RunAway()
@@ -80,9 +81,7 @@ public class Rabbit : MonoBehaviour
             if (CC.nearCliff && grounded)
             {
                 rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-                playerController.IsGrounded = false;
                 grounded = false;
-                _animator.SetTrigger("jumpTrigger");
             }
             yield return null; // wait for the next frame
         }
