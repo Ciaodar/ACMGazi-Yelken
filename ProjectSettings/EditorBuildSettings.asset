@@ -6,8 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
     path: Assets/Scenes/MainMenuScene.unity
     guid: f2e54eebcd8e0de46b02e367c41aa9a3
   - enabled: 1
@@ -19,8 +17,14 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/Scenes/Act2\xC7\u0131k\u0131\u015F.unity"
     guid: 1ae718b979e755c47a2e87597fd7b2f1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Mag1c.unity
     guid: 3e6a7872aaeff5641900f997718938f8
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/OutroCutScene.unity
+    guid: ecfa0089705d3324aa78b24c7d1d06ac
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 90aff1b36e10bfa439b42442a56f8f49, type: 3}
